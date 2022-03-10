@@ -1,0 +1,7 @@
+{
+  "description" : "Electrification analysis pipeline",
+  "docker" : "slacgismo/gridlabd:latest",
+  "git" : "https://github.com/openfido/electrification.git",
+  "branch" : "main",
+  "script" : "openfido.sh"
+}
