@@ -1,7 +1,7 @@
 OpenFIDO Electrification Analysis pipeline
 ==========================================
 
-The `tariff_design` pipeline runs GridLAB-D ICA analysis template.
+The `electrification` pipeline runs GridLAB-D ICA analysis template.
 
 PIPELINE
 --------
