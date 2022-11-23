@@ -5,13 +5,18 @@
 TESTED=0
 FAILED=0
 FILES=
+
+gridlabd template config set GITUSER slacgismo
+gridlabd template config set GITBRANCH add-electrification
+gridlabd template get electrification_analysis
+
 for OPENFIDO_INPUT in $(find $PWD/autotest -name 'input_*' -print); do
     echo "Processing $OPENFIDO_INPUT..."
     export OPENFIDO_INPUT
     export OPENFIDO_OUTPUT=${OPENFIDO_INPUT/autotest\/input_/autotest\/output_}
     mkdir -p $OPENFIDO_OUTPUT
     rm -rf $OPENFIDO_OUTPUT/{*,.??*}
-    if ! sh < openfido.sh 1>$OPENFIDO_OUTPUT/stdout 2>$OPENFIDO_OUTPUT/stderr; then
+    if ! bash openfido.sh 1>$OPENFIDO_OUTPUT/stdout 2>$OPENFIDO_OUTPUT/stderr; then
         FAILED=$(($FAILED+1)) 
         FILES="$FILES ${OPENFIDO_OUTPUT/$PWD\//}"
         echo "ERROR: $OPENFIDO_INPUT test failed"
