@@ -6,10 +6,6 @@ TESTED=0
 FAILED=0
 FILES=
 
-gridlabd template config set GITUSER slacgismo
-gridlabd template config set GITBRANCH add-electrification
-gridlabd template get electrification_analysis
-
 for OPENFIDO_INPUT in $(find $PWD/autotest -name 'input_*' -print); do
     echo "Processing $OPENFIDO_INPUT..."
     export OPENFIDO_INPUT
