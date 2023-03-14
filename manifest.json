@@ -1,7 +1,24 @@
 {
-  "description" : "Electrification analysis pipeline",
-  "docker" : "slacgismo/gridlabd:latest",
-  "git" : "https://github.com/openfido/electrification.git",
-  "branch" : "main",
-  "script" : "openfido.sh"
+  "name": "ELECTRIFICATION",
+  "description": "Residential electrification analysis",
+  "docker": "slacgismo/gridlabd:develop",
+  "git": "https://github.com/openfido/electrification.git",
+  "branch": "main",
+  "script": "openfido.sh",
+  "manual": {
+    "config": "csv"
+  },
+  "config": {
+    "WEATHER": {
+      "description": "Weather file",
+      "default": "CA-San_Jose_Intl_Ap.tmy3",
+      "input_type": "str"
+    },
+    "NHOUSES_ELEC": {
+      "prompt": "Number of electric houses",
+      "description": "Specify the number of electric houses in the simulation",
+      "default": "1",
+      "input_type": "str"
+    },
+  }
 }
