@@ -29,6 +29,7 @@ jobs:
         # if: failure()
         with:
           name: autotest-errors
-          path: autotest-errors.tar.gz
-      - name: Display autotest errors 
-        run: cat autotest-errors.txt
+          path: autotest-errors.txt
+          # path: autotest-errors.tar.gz
+
+
