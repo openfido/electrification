@@ -18,7 +18,7 @@ for OPENFIDO_INPUT in $(find $PWD/autotest -name 'input_*' -print); do
 #         echo "ERROR: $OPENFIDO_INPUT test failed"
 #     fi
 #     TESTED=$(($TESTED+1))
-# done
+done
 
 # echo "$TESTED tests completed"
 # echo "$FAILED tests failed"
