@@ -30,7 +30,7 @@ jobs:
         with:
           name: autotest-errors
           path: |
-            validate.txt
-            validate.tar.gz
+            autotest-errors.txt
+            autotest-errors.tar.gz
 
 
