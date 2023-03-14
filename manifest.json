@@ -10,6 +10,7 @@
   },
   "config": {
     "WEATHER": {
+      "prompt": "Weather TMY3",
       "description": "Weather file",
       "default": "CA-San_Jose_Intl_Ap.tmy3",
       "input_type": "str"
@@ -19,6 +20,70 @@
       "description": "Specify the number of electric houses in the simulation",
       "default": "1",
       "input_type": "str"
+    },
+    "NHOUSES_GAS": {
+      "prompt": "Number of gas houses",
+      "description": "Specify the number of gas houses in the simulation",
+      "default": "0",
+      "input_type": "str"
+    },
+    "TIMEZONE": {
+      "prompt": "Timezone locale",
+      "description": "Specify the timezone to use for date/time values",
+      "default": "PST+8PDT",
+      "input_type": "str"
+    },
+    "YEAR": {
+      "prompt": "Simulation Year",
+      "description": "Specify the year of the simulation",
+      "default": "2023",
+      "input_type": "str"
+    },
+    "MONTH": {
+      "prompt": "Simulation month",
+      "description": "Specify the month of the simulation",
+      "default": "7",
+      "input_type": "str"
+    },
+    "HEATINGSYSTEMTYPE": {
+      "prompt": "Type of heating system",
+      "choices": "HEAT_PUMP, GAS, RESISTANCE, NONE",
+      "description": "Specify the heating system type ",
+      "default": "HEAT_PUMP",
+      "input_type": "enum"
+    },
+    "COOLINGSYSTEMTYPE": {
+      "prompt": "Type of cooling system",
+      "choices": "HEAT_PUMP, ELECTRIC, NONE",
+      "description": "Specify the cooling system type (HEAT_PUMP / GAS)",
+      "default": "HEAT_PUMP",
+      "input_type": "enum"
+    },
+    "HEATINGSETPOINT": {
+      "prompt": "Heating set point",
+      "description": "Average heating set point for the houses.",
+      "default": "70",
+      "input_type": "str"
+    },
+    "COOLINGSETPOINT": {
+      "prompt": "Cooling set point",
+      "description": "Average heating set point for the houses. Only valid if cooling system is active",
+      "default": "75",
+      "input_type": "str"
+    },
+    "THERMALINTEGRITYLEVEL": {
+      "prompt": "House insulation level",
+      "choices": "VERY_LITTLE, LITTLE, BELOW_NORMAL, NORMAL, ABOVE_NORMAL, GOOD, VERY_GOOD",
+      "description": "Specify the insulation level of the houses",
+      "default": "GOOD",
+      "input_type": "enum"
+    },
+    "GASENDUSES": {
+      "prompt": "Gas Appliances",
+      "choices": "WATERHEATER. DRYER, RANGE",
+      "description": "Specify the type of appliances to simulate.",
+      "default": "1",
+      "input_type": "set"
     }
   }
 }
