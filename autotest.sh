@@ -9,7 +9,8 @@ FILES=
 for OPENFIDO_INPUT in $(find $PWD/autotest -name 'input_*' -print); do
     echo "Processing $OPENFIDO_INPUT..."
     export OPENFIDO_INPUT
-    echo "${OPENFIDO_INPUT/autotest\/input_/autotest\/output_}"
+    echo OPENFIDO_INPUT>stdout
+    echo "${OPENFIDO_INPUT/autotest\/input_/autotest\/output_}">stdout
     export OPENFIDO_OUTPUT=${OPENFIDO_INPUT/autotest\/input_/autotest\/output_}
 #     mkdir -p $OPENFIDO_OUTPUT
 #     rm -rf $OPENFIDO_OUTPUT/{*,.??*}
