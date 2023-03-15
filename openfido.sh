@@ -45,7 +45,7 @@ fi
 
 cd $OPENFIDO_OUTPUT
 cp -R $OPENFIDO_INPUT/* .
-( gridlabd template $TEMPLATE_CFG get $TEMPLATE && gridlabd --redirect all $OPTIONS -t $TEMPLATE  ) || error
+( gridlabd template $TEMPLATE_CFG && gridlabd template get $TEMPLATE && gridlabd --redirect all $OPTIONS -t $TEMPLATE  ) || error
 
 echo '*** OUTPUTS ***'
 ls -l $OPENFIDO_OUTPUT
