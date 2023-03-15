@@ -9,7 +9,7 @@ error()
 {
     echo '*** ABNORMAL TERMINATION ***'
     echo 'See error Console Output stderr for details.'
-    echo "See https://github.com/openfido/loadshape for help"
+    echo "See https://github.com/openfido/electrification for help"
     exit 1
 }
 
@@ -45,7 +45,7 @@ fi
 
 cd $OPENFIDO_OUTPUT
 cp -R $OPENFIDO_INPUT/* .
-( gridlabd template $TEMPLATE_CFG get $TEMPLATE && gridlabd --redirect all $OPTIONS -t $TEMPLATE  ) || error
+( gridlabd template $TEMPLATE_CFG get $TEMPLATE && gridlabd $OPTIONS -t $TEMPLATE  ) || error
 
 echo '*** OUTPUTS ***'
 ls -l $OPENFIDO_OUTPUT
