@@ -32,7 +32,7 @@ elif [ ! -f "$OPENFIDO_INPUT/gridlabd.rc" ]; then
     fi
 else
     if [ -f "$OPENFIDO_INPUT/config.csv" ]; then 
-        echo "#input "config.csv" -f "config" -t "config"" > "$OPENFIDO_INPUT/config.glm"
+        echo "#input "config.csv" -f "config" -t "config"" > "$OPENFIDO_INPUT/config-csv-convert.glm"
     fi
     OPTIONS=$(cd $OPENFIDO_INPUT ; cat gridlabd.rc | tr '\n' ' ')
 fi
