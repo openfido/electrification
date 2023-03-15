@@ -48,7 +48,7 @@ fi
 cd $OPENFIDO_OUTPUT
 if [ -f "$OPENFIDO_INPUT/config.csv" ]; then 
     echo 'Adding config CSV conversion file'
-    gridlabd "config-csv-convert.glm"
+    gridlabd "../config-csv-convert.glm"
 fi
 cp -R $OPENFIDO_INPUT/!(config.csv) .
 ( gridlabd template $TEMPLATE_CFG && gridlabd template get $TEMPLATE && gridlabd --redirect all $OPTIONS -t $TEMPLATE  ) || error
