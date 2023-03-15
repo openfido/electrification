@@ -18,6 +18,8 @@ trap on_error 1 2 3 4 6 7 8 11 13 14 15
 set -x # print commands
 set -e # exit on error
 set -u # nounset enabled
+shopt -s extglob
+
 
 if [ ! -f "/usr/local/bin/gridlabd" ]; then
     echo "ERROR [openfido.sh]: '/usr/local/bin/gridlabd' not found" > /dev/stderr
@@ -31,9 +33,6 @@ elif [ ! -f "$OPENFIDO_INPUT/gridlabd.rc" ]; then
         error
     fi
 else
-    if [ -f "$OPENFIDO_INPUT/config.csv" ]; then 
-        echo "#input "config.csv" -f "config" -t "config"" > "$OPENFIDO_INPUT/config-csv-convert.glm"
-    fi
     OPTIONS=$(cd $OPENFIDO_INPUT ; cat gridlabd.rc | tr '\n' ' ')
 fi
 
@@ -47,7 +46,11 @@ else
 fi
 
 cd $OPENFIDO_OUTPUT
-cp -R $OPENFIDO_INPUT/* .
+if [ -f "$OPENFIDO_INPUT/config.csv" ]; then 
+    echo 'Adding config CSV conversion file'
+    gridlabd "config-csv-convert.glm"
+fi
+cp -R $OPENFIDO_INPUT/!(config.csv) .
 ( gridlabd template $TEMPLATE_CFG && gridlabd template get $TEMPLATE && gridlabd --redirect all $OPTIONS -t $TEMPLATE  ) || error
 
 echo '*** OUTPUTS ***'
