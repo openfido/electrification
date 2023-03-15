@@ -15,7 +15,7 @@ error()
 
 trap on_error 1 2 3 4 6 7 8 11 13 14 15
 
-# set -x # print commands
+set -x # print commands
 set -e # exit on error
 set -u # nounset enabled
 
@@ -38,7 +38,7 @@ echo '*** INPUTS ***'
 ls -l $OPENFIDO_INPUT
 
 if [ -f template.rc ]; then
-    TEMPLATE_CFG=$(cat template.cfg | tr '\n' ' ' )
+    TEMPLATE_CFG=$(cat template.rc | tr '\n' ' ' )
 else
     TEMPLATE_CFG=""
 fi
@@ -50,6 +50,7 @@ cp -R $OPENFIDO_INPUT/* .
 echo '*** OUTPUTS ***'
 ls -l $OPENFIDO_OUTPUT
 
+echo '*** RUN COMPLETE ***'
 echo 'See Data Visualization and Artifacts for results.'
 
 echo '*** END ***'
