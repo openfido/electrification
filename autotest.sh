@@ -14,7 +14,7 @@ for OPENFIDO_INPUT in $(find $PWD/autotest -name 'input_*' -print); do
     rm -rf $OPENFIDO_OUTPUT/{*,.??*}
     if ! bash openfido.sh 1>$OPENFIDO_OUTPUT/stdout 2>$OPENFIDO_OUTPUT/stderr; then
         FAILED=$(($FAILED+1)) 
-        FILES="$FILES ${OPENFIDO_OUTPUT}/$PWD\//"
+        FILES="$FILES ${OPENFIDO_OUTPUT}/"
         echo "ERROR: $OPENFIDO_INPUT test failed"
     fi
     TESTED=$(($TESTED+1))
