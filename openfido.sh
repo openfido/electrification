@@ -50,7 +50,6 @@ cp -R $OPENFIDO_INPUT/* .
 echo '*** OUTPUTS ***'
 ls -l $OPENFIDO_OUTPUT
 
-echo '*** RUN COMPLETE ***'
 echo 'See Data Visualization and Artifacts for results.'
 
 echo '*** END ***'
