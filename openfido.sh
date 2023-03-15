@@ -9,7 +9,7 @@ error()
 {
     echo '*** ABNORMAL TERMINATION ***'
     echo 'See error Console Output stderr for details.'
-    echo "See https://github.com/openfido/loadshape for help"
+    echo "See https://github.com/openfido/electrification for help"
     exit 1
 }
 
@@ -25,9 +25,9 @@ if [ ! -f "/usr/local/bin/gridlabd" ]; then
 elif [ ! -f "$OPENFIDO_INPUT/gridlabd.rc" ]; then
     OPTIONS=$(cd $OPENFIDO_INPUT; ls -1 | tr '\n' ' ')
     if [ ! -z "$OPTIONS" ]; then
-        echo "WARNING [openfido.sh]: '$OPENFIDO_INPUT/gridlabd.rc' not found, using all input files by default" > /dev/stderr
+        echo "WARNING [openfido.sh]: '$OPENFIDO_INPUT/gridlabd.rc' not found, using all input files by default" 
     else
-        echo "ERROR [openfido.sh]: no input files"
+        echo "ERROR [openfido.sh]: no input files" > /dev/stderr
         error
     fi
 else
@@ -38,14 +38,14 @@ echo '*** INPUTS ***'
 ls -l $OPENFIDO_INPUT
 
 if [ -f template.rc ]; then
-    TEMPLATE_CFG=$(cat template.cfg | tr '\n' ' ' )
+    TEMPLATE_CFG=$(cat template.rc | tr '\n' ' ' )
 else
     TEMPLATE_CFG=""
 fi
 
 cd $OPENFIDO_OUTPUT
 cp -R $OPENFIDO_INPUT/* .
-( gridlabd template $TEMPLATE_CFG get $TEMPLATE && gridlabd --redirect all $OPTIONS -t $TEMPLATE  ) || error
+( gridlabd template $TEMPLATE_CFG && gridlabd template get $TEMPLATE && gridlabd --redirect all $OPTIONS -t $TEMPLATE  ) || error
 
 echo '*** OUTPUTS ***'
 ls -l $OPENFIDO_OUTPUT
