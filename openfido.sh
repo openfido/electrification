@@ -25,9 +25,10 @@ cd $OPENFIDO_INPUT
 if [ -f "$OPENFIDO_INPUT/config.csv" ]; then 
     echo 'Adding config CSV conversion file'
     gridlabd "$OG_PATH/config-csv-convert.glm"
-    if [ ! "$OPENFIDO_INPUT/weather.glm" ]; then 
+    if [ ! -f "$OPENFIDO_INPUT/weather.glm" ]; then 
         WEATHER=$(grep ^WEATHER, "$OPENFIDO_INPUT/config.csv" | cut -f2- -d, | tr ',' ' ')
-        echo "#weather get $WEATHER" > "$OPENFIDO_INPUT/weather.glm"
+        gridlabd weather get $WEATHER
+        # echo "#weather get $WEATHER" > "$OPENFIDO_INPUT/weather.glm"
     fi
     rm -rf "$OPENFIDO_INPUT/config.csv"
 fi
