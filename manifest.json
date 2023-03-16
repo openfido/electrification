@@ -82,7 +82,7 @@
       "prompt": "Gas Appliances",
       "choices": "WATERHEATER, DRYER, RANGE",
       "description": "Specify the type of appliances to simulate.",
-      "default": "WATERHEATER, DRYER, RANGE",
+      "default": "WATERHEATER|DRYER|RANGE",
       "input_type": "set"
     }
   }
