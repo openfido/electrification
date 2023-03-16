@@ -27,6 +27,7 @@ if [ -f "$OPENFIDO_INPUT/config.csv" ]; then
     gridlabd "$OG_PATH/config-csv-convert.glm"
     if [ ! "$OPENFIDO_INPUT/weather.glm" ]; then 
         WEATHER=$(grep ^WEATHER, "$OPENFIDO_INPUT/config.csv" | cut -f2- -d, | tr ',' ' ')
+        gridlabd weather get $WEATHER 
     fi
 fi
 cd - 
@@ -58,7 +59,7 @@ fi
 cd $OPENFIDO_OUTPUT
 cp -R $OPENFIDO_INPUT/!(config.csv) .
 ls -l $OPENFIDO_OUTPUT
-( gridlabd template $TEMPLATE_CFG && gridlabd template get $TEMPLATE && gridlabd weather get $WEATHER && gridlabd --redirect all $OPTIONS -t $TEMPLATE  ) || error
+( gridlabd template $TEMPLATE_CFG && gridlabd template get $TEMPLATE && gridlabd --redirect all $OPTIONS -t $TEMPLATE  ) || error
 
 echo '*** OUTPUTS ***'
 ls -l $OPENFIDO_OUTPUT
