@@ -18,6 +18,21 @@ trap on_error 1 2 3 4 6 7 8 11 13 14 15
 set -x # print commands
 set -e # exit on error
 set -u # nounset enabled
+shopt -s extglob
+
+export OG_PATH=$PWD
+cd $OPENFIDO_INPUT
+if [ -f "$OPENFIDO_INPUT/config.csv" ]; then 
+    echo 'Adding config CSV conversion file'
+    gridlabd "$OG_PATH/config-csv-convert.glm"
+    if [ ! -f "$OPENFIDO_INPUT/weather.glm" ]; then 
+        WEATHER=$(grep ^WEATHER, "$OPENFIDO_INPUT/config.csv" | cut -f2- -d, | tr ',' ' ')
+        gridlabd weather get $WEATHER
+        # echo "#weather get $WEATHER" > "$OPENFIDO_INPUT/weather.glm"
+    fi
+    rm -rf "$OPENFIDO_INPUT/config.csv"
+fi
+cd - 
 
 if [ ! -f "/usr/local/bin/gridlabd" ]; then
     echo "ERROR [openfido.sh]: '/usr/local/bin/gridlabd' not found" > /dev/stderr
@@ -45,6 +60,7 @@ fi
 
 cd $OPENFIDO_OUTPUT
 cp -R $OPENFIDO_INPUT/* .
+ls -l $OPENFIDO_OUTPUT
 ( gridlabd template $TEMPLATE_CFG && gridlabd template get $TEMPLATE && gridlabd --redirect all $OPTIONS -t $TEMPLATE  ) || error
 
 echo '*** OUTPUTS ***'
