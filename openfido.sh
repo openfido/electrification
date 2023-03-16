@@ -20,6 +20,12 @@ set -e # exit on error
 set -u # nounset enabled
 shopt -s extglob
 
+cd $OPENFIDO_INPUT
+if [ -f "$OPENFIDO_INPUT/config.csv" ]; then 
+    echo 'Adding config CSV conversion file'
+    gridlabd "$OG_PATH/config-csv-convert.glm"
+fi
+cd - 
 
 if [ ! -f "/usr/local/bin/gridlabd" ]; then
     echo "ERROR [openfido.sh]: '/usr/local/bin/gridlabd' not found" > /dev/stderr
@@ -45,14 +51,9 @@ else
     TEMPLATE_CFG=""
 fi
 
-export OG_PATH=$PWD
-
 cd $OPENFIDO_OUTPUT
-if [ -f "$OPENFIDO_INPUT/config.csv" ]; then 
-    echo 'Adding config CSV conversion file'
-    gridlabd "$OG_PATH/config-csv-convert.glm"
-fi
 cp -R $OPENFIDO_INPUT/!(config.csv) .
+ls -l $OPENFIDO_OUTPUT
 ( gridlabd template $TEMPLATE_CFG && gridlabd template get $TEMPLATE && gridlabd --redirect all $OPTIONS -t $TEMPLATE  ) || error
 
 echo '*** OUTPUTS ***'
