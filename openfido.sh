@@ -20,6 +20,7 @@ set -e # exit on error
 set -u # nounset enabled
 shopt -s extglob
 
+export OG_PATH=$PWD
 cd $OPENFIDO_INPUT
 if [ -f "$OPENFIDO_INPUT/config.csv" ]; then 
     echo 'Adding config CSV conversion file'
