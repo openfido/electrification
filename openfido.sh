@@ -2,7 +2,7 @@
 #
 # GridLAB-D environment for OpenFIDO
 #
-
+cat /etc/shells
 TEMPLATE=electrification
 
 error()
